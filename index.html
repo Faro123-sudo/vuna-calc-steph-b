@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VUNA-Calc</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7 col-sm-9">
+        <h4 class="text-center group-header">VUNA-Calc</h4>
+        <div class="card calculator-card">
+          <div class="card-body p-4">
+            <div class="calculator">
+              <div class="display-container">
+                <input type="text" class="form-control" id="result" placeholder="0" disabled />
+              </div>
+              <div class="btn-grid">
+                <button class="btn btn-action" onclick="clearEntry()">CE</button>
+                <button class="btn btn-action" onclick="clearResult()">AC</button>
+                <button class="btn btn-light" onclick="backspace()">&#8592;</button>
+                <button class="btn btn-operator" onclick="operatorToResult('/')">&#247;</button>
+
+                <button class="btn btn-light" onclick="appendToResult(7)">7</button>
+                <button class="btn btn-light" onclick="appendToResult(8)">8</button>
+                <button class="btn btn-light" onclick="appendToResult(9)">9</button>
+                <button class="btn btn-operator" onclick="operatorToResult('*')">&#215;</button>
+
+                <button class="btn btn-light" onclick="appendToResult(4)">4</button>
+                <button class="btn btn-light" onclick="appendToResult(5)">5</button>
+                <button class="btn btn-light" onclick="appendToResult(6)">6</button>
+                <button class="btn btn-operator" onclick="operatorToResult('-')">&#8722;</button>
+
+                <button class="btn btn-light" onclick="appendToResult(1)">1</button>
+                <button class="btn btn-light" onclick="appendToResult(2)">2</button>
+                <button class="btn btn-light" onclick="appendToResult(3)">3</button>
+                <button class="btn btn-operator" onclick="operatorToResult('+')">+</button>
+
+                <button class="btn btn-light zero-btn" onclick="appendToResult(0)">0</button>
+                <button class="btn btn-light" onclick="appendToResult('.')">.</button>
+                <button class="btn btn-equals" onclick="calculateResult()">=</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
