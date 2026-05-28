@@ -16,9 +16,17 @@
           <div class="card-body p-4">
             <div class="calculator">
               <div class="display-container">
+                <div class="display-top">
+                  <span class="mode-indicator" id="modeIndicator">DEG</span>
+                </div>
                 <input type="text" class="form-control" id="result" placeholder="0" disabled />
               </div>
               <div class="btn-grid">
+                <button class="btn btn-operator" onclick="toggleMode()" id="modeBtn">DEG</button>
+                <button class="btn btn-function" onclick="trigFunction('sin')">sin</button>
+                <button class="btn btn-function" onclick="trigFunction('cos')">cos</button>
+                <button class="btn btn-function" onclick="trigFunction('tan')">tan</button>
+
                 <button class="btn btn-action" onclick="clearEntry()">CE</button>
                 <button class="btn btn-action" onclick="clearResult()">AC</button>
                 <button class="btn btn-light" onclick="backspace()">&#8592;</button>
@@ -41,7 +49,7 @@
 
                 <button class="btn btn-light zero-btn" onclick="appendToResult(0)">0</button>
                 <button class="btn btn-light" onclick="appendToResult('.')">.</button>
-                <button class="btn btn-equals" onclick="calculateResult()">=</button>
+                <button class="btn btn-equals equals-span" onclick="calculateResult()">=</button>
               </div>
             </div>
           </div>
