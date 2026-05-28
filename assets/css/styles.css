@@ -57,6 +57,14 @@ body {
   font-family: 'Courier New', monospace;
 }
 
+.shift-indicator {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e67e22;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+
 #result {
   text-align: right;
   font-size: 32px;
@@ -74,14 +82,14 @@ body {
 
 .btn-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
 }
 
 .calculator .btn {
-  height: 54px;
+  height: 50px;
   border-radius: 12px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -103,18 +111,18 @@ body {
 .btn-operator { background: #e7f1ff; color: var(--primary-color); }
 .btn-operator:hover { background: #cfe2ff; }
 
-.btn-action   { background: #fff5f5; color: #fa5252; font-size: 16px; }
+.btn-action   { background: #fff5f5; color: #fa5252; font-size: 15px; }
 .btn-action:hover { background: #ffe3e3; }
 
 .btn-function { background: #f0efff; color: var(--function-color); }
 .btn-function:hover { background: #e4e2ff; }
 
-.btn-equals   { background: var(--primary-color); color: white; font-size: 24px; }
-.btn-equals:hover { background: #0b5ed7; color: white; }
+.btn-shift    { background: #fff3e0; color: #e67e22; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
+.btn-shift:hover { background: #ffe0b2; }
+.btn-shift.active { background: #e67e22; color: #fff; }
 
-.equals-span {
-  grid-column: span 2;
-}
+.btn-equals   { background: var(--primary-color); color: white; font-size: 22px; }
+.btn-equals:hover { background: #0b5ed7; color: white; }
 
 .group-header {
   color: #495057;

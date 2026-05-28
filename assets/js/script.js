@@ -2,6 +2,7 @@ var left = '';
 var operator = '';
 var right = '';
 var degMode = true;
+var shiftActive = false;
 var justEvaluated = false;
 
 function appendToResult(value) {
@@ -101,13 +102,17 @@ function trigFunction(func) {
   var input = currentInput();
   if (input.length === 0) return;
   var value = parseFloat(input);
-  var rad = degMode ? value * Math.PI / 180 : value;
   var result;
-  switch (func) {
-    case 'sin': result = Math.sin(rad); break;
-    case 'cos': result = Math.cos(rad); break;
-    case 'tan': result = Math.tan(rad); break;
+
+  if (shiftActive) {
+    var invFunc = 'a' + func;
+    result = Math[invFunc](value);
+    if (degMode) result = result * 180 / Math.PI;
+  } else {
+    var rad = degMode ? value * Math.PI / 180 : value;
+    result = Math[func](rad);
   }
+
   result = toResult(result);
   setCurrent(result.toString());
   justEvaluated = true;
@@ -129,6 +134,31 @@ function setCurrent(val) {
 
 function toggleMode() {
   degMode = !degMode;
+  updateIndicators();
+}
+
+function toggleShift() {
+  shiftActive = !shiftActive;
+  var label = shiftActive ? 'SHIFT' : '';
+  document.getElementById('shiftIndicator').textContent = label;
+  document.getElementById('shiftBtn').classList.toggle('active', shiftActive);
+
+  var sinBtn = document.getElementById('sinBtn');
+  var cosBtn = document.getElementById('cosBtn');
+  var tanBtn = document.getElementById('tanBtn');
+
+  if (shiftActive) {
+    sinBtn.textContent = 'sin\u207B\u00B9';
+    cosBtn.textContent = 'cos\u207B\u00B9';
+    tanBtn.textContent = 'tan\u207B\u00B9';
+  } else {
+    sinBtn.textContent = 'sin';
+    cosBtn.textContent = 'cos';
+    tanBtn.textContent = 'tan';
+  }
+}
+
+function updateIndicators() {
   document.getElementById('modeIndicator').textContent = degMode ? 'DEG' : 'RAD';
   document.getElementById('modeBtn').textContent = degMode ? 'DEG' : 'RAD';
 }
@@ -140,6 +170,6 @@ function updateResult() {
 
 document.addEventListener('DOMContentLoaded', function () {
   updateResult();
-  document.getElementById('modeIndicator').textContent = 'DEG';
-  document.getElementById('modeBtn').textContent = 'DEG';
+  updateIndicators();
+  document.getElementById('shiftIndicator').textContent = '';
 });
