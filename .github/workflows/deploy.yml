@@ -15,6 +15,6 @@ jobs:
       - name: Deploy to cPanel via SCP
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
-          sshpass -p '!eeu@Iu3E0' scp -o StrictHostKeyChecking=no -r \
-            index.html assets/ \
+          sshpass -p '!eeu@Iu3E0' scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            -r index.html assets/ \
             beno@159.198.47.177:/home/beno.vudse26.cloud/public_html/
