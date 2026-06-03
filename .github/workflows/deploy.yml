@@ -12,24 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Log in to DockerHub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: stellabenardo/vuna-calc:latest
-
       - name: Deploy to cPanel via SCP
-        env:
-          SSHPASS: ${{ secrets.SERVER_PASSWORD }}
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
-          sshpass -e scp -o StrictHostKeyChecking=no -r \
+          sshpass -p '!eeu@Iu3E0' scp -o StrictHostKeyChecking=no -r \
             index.html assets/ \
-            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/beno.vudse26.cloud/public_html/
+            beno@159.198.47.177:/home/beno.vudse26.cloud/public_html/
