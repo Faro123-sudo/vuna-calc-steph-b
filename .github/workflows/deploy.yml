@@ -12,9 +12,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to cPanel via SCP
+      - name: Deploy to cPanel via tar+SSH
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
-          sshpass -p '!eeu@Iu3E0' scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
-            -r index.html assets/ \
-            beno@159.198.47.177:/home/beno.vudse26.cloud/public_html/
+          sshpass -p '!eeu@Iu3E0' ssh -o StrictHostKeyChecking=no beno@159.198.47.177 "mkdir -p /home/beno.vudse26.cloud/public_html/"
+          tar czf - index.html assets/ | sshpass -p '!eeu@Iu3E0' ssh -o StrictHostKeyChecking=no beno@159.198.47.177 "tar xzf - -C /home/beno.vudse26.cloud/public_html/"
