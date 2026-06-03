@@ -12,11 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP
+      - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: 159.198.47.177
           username: beno
-          password: '!eeu@Iu3E0'
+          password: 'gx42l!IEc#'
+          protocol: ftps
           local-dir: ./
           server-dir: /public_html/
