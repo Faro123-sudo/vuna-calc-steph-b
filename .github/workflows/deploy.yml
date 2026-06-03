@@ -12,15 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Probe server paths
+      - name: Deploy via tar+SSH
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
-          sshpass -p '!eeu@Iu3E0' ssh -o StrictHostKeyChecking=no beno@159.198.47.177 "
-            echo 'HOME='\$HOME
-            echo 'PWD='\$PWD
-            echo 'WHOAMI='\$(whoami)
-            ls -la /home/
-            ls -la /home/beno.vudse26.cloud/ 2>/dev/null || echo 'no beno.vudse26.cloud dir'
-            ls -la /home/beno/ 2>/dev/null || echo 'no beno dir'
-            find /home -name 'public_html' -type d 2>/dev/null
-          "
+          tar czf - index.html assets/ | sshpass -p '!eeu@Iu3E0' ssh -o StrictHostKeyChecking=no beno@159.198.47.177 "tar xzf - -C ./"
