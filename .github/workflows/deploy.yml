@@ -12,13 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Probe permissions
-        run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
-          sshpass -p '!eeu@Iu3E0' ssh -o StrictHostKeyChecking=no beno@159.198.47.177 "
-            pwd
-            ls -la
-            whoami
-            id
-            ls -la /home/
-          "
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 159.198.47.177
+          username: beno
+          password: '!eeu@Iu3E0'
+          local-dir: ./
+          server-dir: /public_html/
