@@ -12,12 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check public_html
+      - name: Check directory ownership
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
           sshpass -p '!eeu@Iu3E0' ssh -o StrictHostKeyChecking=no beno@159.198.47.177 "
-            ls -la public_html
-            touch public_html/test.txt
-            ls -la public_html/test.txt
-            rm public_html/test.txt
+            stat /home/beno.vudse26.cloud
+            stat /home/beno.vudse26.cloud/public_html
+            touch /tmp/test_write
+            id
           "
