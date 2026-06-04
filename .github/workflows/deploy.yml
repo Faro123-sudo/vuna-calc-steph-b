@@ -12,12 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check directory ownership
+      - name: Try alternative methods
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
           sshpass -p '!eeu@Iu3E0' ssh -o StrictHostKeyChecking=no beno@159.198.47.177 "
-            stat /home/beno.vudse26.cloud
-            stat /home/beno.vudse26.cloud/public_html
-            touch /tmp/test_write
-            id
+            getfacl /home/beno.vudse26.cloud/public_html
+            sudo -n whoami
+            groups
           "
