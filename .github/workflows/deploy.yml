@@ -20,15 +20,10 @@ jobs:
           push: true
           tags: stellabenardo/vuna-calc:latest
 
-      - name: Deploy via SSH curl from GitHub
-        run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
-          sshpass -p '!eeu@Iu3E0' ssh -o StrictHostKeyChecking=no beno@159.198.47.177 "
-            cd /home/beno.vudse26.cloud/public_html/
-            curl -sO https://raw.githubusercontent.com/Faro123-sudo/vuna-calc-steph-b/main/index.html
-            mkdir -p assets/css assets/js
-            curl -sLo assets/css/styles.css https://raw.githubusercontent.com/Faro123-sudo/vuna-calc-steph-b/main/assets/css/styles.css
-            curl -sLo assets/css/bootstrap.min.css https://raw.githubusercontent.com/Faro123-sudo/vuna-calc-steph-b/main/assets/css/bootstrap.min.css
-            curl -sLo assets/js/script.js https://raw.githubusercontent.com/Faro123-sudo/vuna-calc-steph-b/main/assets/js/script.js
-            curl -sLo assets/js/bootstrap.min.js https://raw.githubusercontent.com/Faro123-sudo/vuna-calc-steph-b/main/assets/js/bootstrap.min.js
-          "
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 159.198.47.177
+          username: beno_deploy
+          password: 'K#kzp4na!9Gnyvr1'
+          server-dir: /public_html/
