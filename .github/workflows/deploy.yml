@@ -26,4 +26,5 @@ jobs:
           server: 159.198.47.177
           username: beno_deploy
           password: 'K#kzp4na!9Gnyvr1'
+          protocol: ftps
           server-dir: /public_html/
