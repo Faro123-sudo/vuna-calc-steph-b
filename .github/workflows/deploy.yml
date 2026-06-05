@@ -20,11 +20,8 @@ jobs:
           push: true
           tags: stellabenardo/vuna-calc:latest
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: 159.198.47.177
-          username: beno_deploy
-          password: 'K#kzp4na!9Gnyvr1'
-          protocol: ftps
-          server-dir: /public_html/
+      - name: Deploy via SSH with sudo
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
+          tar czf - index.html assets/ | sshpass -p '!eeu@Iu3E0' ssh -o StrictHostKeyChecking=no \
+            beno@159.198.47.177 "cat > /tmp/web.tar.gz && echo '!eeu@Iu3E0' | sudo -S tar xzf /tmp/web.tar.gz -C /home/beno.vudse26.cloud/public_html/ && rm /tmp/web.tar.gz"
