@@ -1,67 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOFTWARE ENGINEERING CALCULATOR - VERITAS UNIVERSITY ABUJA</title>
+  <title>SEN 482 - SOFTWARE ENGINEERING CALCULATOR</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 50%, #0d1b2a 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .card {
+      background: #1e2a3a;
+      border: 1px solid #2a3a4a;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .card-header {
+      background: #243447;
+      border-bottom: 2px solid #00d4aa;
+      border-radius: 16px 16px 0 0 !important;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .card-header h1 {
+      color: #00d4aa;
+      font-size: 1.6rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    .card-header .subtitle {
+      color: #8899aa;
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+    .card-body {
+      padding: 2rem;
+    }
+    .student-info {
+      border-bottom: 1px solid #2a3a4a;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+    .student-info p {
+      margin: 4px 0;
+      font-size: 0.95rem;
+    }
+    .student-info .label {
+      color: #8899aa;
+      display: inline-block;
+      width: 100px;
+    }
+    .student-info .value {
+      color: #e0e0e0;
+    }
+    .section-title {
+      color: #00d4aa;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 1.2rem 0 0.6rem 0;
+    }
+    .btn-calc {
+      background: #00d4aa;
+      color: #0d1b2a;
+      border: none;
+      padding: 10px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    .btn-calc:hover {
+      background: #00b894;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+    }
+    .btn-github {
+      background: transparent;
+      color: #e0e0e0;
+      border: 1px solid #2a3a4a;
+      padding: 10px 30px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-github:hover {
+      background: #2a3a4a;
+      color: #00d4aa;
+      border-color: #00d4aa;
+    }
+    .pipeline {
+      background: #161f2e;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-family: monospace;
+      font-size: 0.85rem;
+    }
+    .pipeline .arrow {
+      color: #00d4aa;
+    }
+    .pipeline .step {
+      color: #e0e0e0;
+    }
+    .badge-item {
+      background: #243447;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      color: #00d4aa;
+      display: inline-block;
+      margin: 3px;
+      border: 1px solid #2a3a4a;
+    }
+  </style>
 </head>
-
 <body>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-5 col-md-7 col-sm-9">
-        <h4 class="text-center group-header"><strong>SOFTWARE ENGINEERING CALCULATOR</strong> <em>VERITAS UNIVERSITY ABUJA</em></h4>
-        <div class="card calculator-card">
-          <div class="card-body p-4">
-            <div class="calculator">
-              <div class="display-container">
-                <div class="display-top">
-                  <span class="mode-indicator" id="modeIndicator">DEG</span>
-                  <span class="shift-indicator" id="shiftIndicator"></span>
-                </div>
-                <input type="text" class="form-control" id="result" placeholder="0" disabled />
-              </div>
-              <div class="btn-grid">
-                <button class="btn btn-operator" onclick="toggleMode()" id="modeBtn">DEG</button>
-                <button class="btn btn-shift" onclick="toggleShift()" id="shiftBtn">Shift</button>
-                <button class="btn btn-function" onclick="trigFunction('sin')" id="sinBtn">sin</button>
-                <button class="btn btn-function" onclick="trigFunction('cos')" id="cosBtn">cos</button>
-                <button class="btn btn-function" onclick="trigFunction('tan')" id="tanBtn">tan</button>
+      <div class="col-lg-7 col-md-9">
+        <div class="card">
+          <div class="card-header">
+            <h1>SEN 482 - SOFTWARE ENGINEERING</h1>
+            <div class="subtitle">CI/CD Pipeline Deployment Project</div>
+          </div>
+          <div class="card-body">
+            <div class="student-info">
+              <p><span class="label">Name:</span><span class="value">Limaro Stephanie Beno</span></p>
+              <p><span class="label">Matric:</span><span class="value">VUG/SEN/22/7328</span></p>
+              <p><span class="label">Course:</span><span class="value">Software Engineering (SEN 482)</span></p>
+              <p><span class="label">Domain:</span><span class="value">beno.vudse26.cloud</span></p>
+            </div>
 
-                <button class="btn btn-action" onclick="clearEntry()">CE</button>
-                <button class="btn btn-action" onclick="clearResult()">AC</button>
-                <button class="btn btn-light" onclick="backspace()">&#8592;</button>
-                <button class="btn btn-operator" onclick="operatorToResult('/')">&#247;</button>
-                <button class="btn btn-operator" onclick="operatorToResult('*')">&#215;</button>
+            <div class="section-title">About the Project</div>
+            <p style="font-size:0.9rem;color:#b0c0d0;">
+              A scientific calculator deployed using a fully automated CI/CD pipeline.
+              Every push to the GitHub repository triggers an automatic build and deployment
+              to this server.
+            </p>
 
-                <button class="btn btn-light" onclick="appendToResult(7)">7</button>
-                <button class="btn btn-light" onclick="appendToResult(8)">8</button>
-                <button class="btn btn-light" onclick="appendToResult(9)">9</button>
-                <button class="btn btn-operator" onclick="operatorToResult('-')">&#8722;</button>
-                <button class="btn btn-operator" onclick="operatorToResult('+')">+</button>
+            <div class="section-title">CI/CD Pipeline</div>
+            <div class="pipeline">
+              <span class="step">Git Push</span>
+              <span class="arrow"> &#8594; </span>
+              <span class="step">GitHub Actions</span>
+              <span class="arrow"> &#8594; </span>
+              <span class="step">Docker Build</span>
+              <span class="arrow"> &#8594; </span>
+              <span class="step">DockerHub Push</span>
+              <span class="arrow"> &#8594; </span>
+              <span class="step">FTP Deploy</span>
+              <span class="arrow"> &#8594; </span>
+              <span class="step">Live Site</span>
+            </div>
 
-                <button class="btn btn-light" onclick="appendToResult(4)">4</button>
-                <button class="btn btn-light" onclick="appendToResult(5)">5</button>
-                <button class="btn btn-light" onclick="appendToResult(6)">6</button>
-                <button class="btn btn-light" onclick="appendToResult('.')">.</button>
-                <button class="btn btn-equals" onclick="calculateResult()">=</button>
+            <div class="section-title">Tech Stack</div>
+            <div>
+              <span class="badge-item">HTML/CSS/JS</span>
+              <span class="badge-item">Bootstrap</span>
+              <span class="badge-item">Docker</span>
+              <span class="badge-item">Nginx</span>
+              <span class="badge-item">GitHub Actions</span>
+              <span class="badge-item">DockerHub</span>
+              <span class="badge-item">CyberPanel</span>
+              <span class="badge-item">FTP</span>
+            </div>
 
-                <button class="btn btn-light" onclick="appendToResult(1)">1</button>
-                <button class="btn btn-light" onclick="appendToResult(2)">2</button>
-                <button class="btn btn-light" onclick="appendToResult(3)">3</button>
-                <button class="btn btn-light zero-btn" onclick="appendToResult(0)">0</button>
-              </div>
+            <div style="text-align:center;margin-top:2rem;">
+              <a href="calculator/" class="btn btn-calc">Open Calculator</a>
+              <a href="https://github.com/Faro123-sudo/vuna-calc-steph-b" target="_blank" class="btn-github" style="margin-left:10px;">View on GitHub</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/script.js"></script>
 </body>
-
 </html>

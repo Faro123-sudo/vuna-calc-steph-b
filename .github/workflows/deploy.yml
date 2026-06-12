@@ -27,3 +27,11 @@ jobs:
           username: beno_deploy
           password: 'K#kzp4na!9Gnyvr1'
           server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git/**
+            **/.github/**
+            **/Dockerfile
+            **/.dockerignore
+            **/LICENSE
+            **/.vscode/**

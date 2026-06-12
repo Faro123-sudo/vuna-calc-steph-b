@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VUNA-Calc - Scientific Calculator</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7 col-sm-9">
+        <h4 class="text-center group-header"><strong>SOFTWARE ENGINEERING CALCULATOR</strong> <em>VERITAS UNIVERSITY ABUJA</em></h4>
+        <div class="card calculator-card">
+          <div class="card-body p-4">
+            <div class="calculator">
+              <div class="display-container">
+                <div class="display-top">
+                  <span class="mode-indicator" id="modeIndicator">DEG</span>
+                  <span class="shift-indicator" id="shiftIndicator"></span>
+                </div>
+                <input type="text" class="form-control" id="result" placeholder="0" disabled />
+              </div>
+              <div class="btn-grid">
+                <button class="btn btn-operator" onclick="toggleMode()" id="modeBtn">DEG</button>
+                <button class="btn btn-shift" onclick="toggleShift()" id="shiftBtn">Shift</button>
+                <button class="btn btn-function" onclick="trigFunction('sin')" id="sinBtn">sin</button>
+                <button class="btn btn-function" onclick="trigFunction('cos')" id="cosBtn">cos</button>
+                <button class="btn btn-function" onclick="trigFunction('tan')" id="tanBtn">tan</button>
+
+                <button class="btn btn-action" onclick="clearEntry()">CE</button>
+                <button class="btn btn-action" onclick="clearResult()">AC</button>
+                <button class="btn btn-light" onclick="backspace()">&#8592;</button>
+                <button class="btn btn-operator" onclick="operatorToResult('/')">&#247;</button>
+                <button class="btn btn-operator" onclick="operatorToResult('*')">&#215;</button>
+
+                <button class="btn btn-light" onclick="appendToResult(7)">7</button>
+                <button class="btn btn-light" onclick="appendToResult(8)">8</button>
+                <button class="btn btn-light" onclick="appendToResult(9)">9</button>
+                <button class="btn btn-operator" onclick="operatorToResult('-')">&#8722;</button>
+                <button class="btn btn-operator" onclick="operatorToResult('+')">+</button>
+
+                <button class="btn btn-light" onclick="appendToResult(4)">4</button>
+                <button class="btn btn-light" onclick="appendToResult(5)">5</button>
+                <button class="btn btn-light" onclick="appendToResult(6)">6</button>
+                <button class="btn btn-light" onclick="appendToResult('.')">.</button>
+                <button class="btn btn-equals" onclick="calculateResult()">=</button>
+
+                <button class="btn btn-light" onclick="appendToResult(1)">1</button>
+                <button class="btn btn-light" onclick="appendToResult(2)">2</button>
+                <button class="btn btn-light" onclick="appendToResult(3)">3</button>
+                <button class="btn btn-light zero-btn" onclick="appendToResult(0)">0</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:1rem;">
+          <a href="../" style="color:#00d4aa;font-size:0.85rem;">&#8592; Back to Homepage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

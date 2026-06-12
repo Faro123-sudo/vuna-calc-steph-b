@@ -9,6 +9,7 @@ RUN rm -rf /usr/share/nginx/html/*
 # Assumes index.html and assets/ exist at repo root
 COPY ./index.html /usr/share/nginx/html/index.html
 COPY ./assets/ /usr/share/nginx/html/assets/
+COPY ./calculator/ /usr/share/nginx/html/calculator/
 
 # Expose port 80 for nginx
 EXPOSE 80
