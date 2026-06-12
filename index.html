@@ -1,67 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOFTWARE ENGINEERING CALCULATOR - VERITAS UNIVERSITY ABUJA</title>
+  <title>BENO - SEN 482</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #0d1b2a, #1b2838);
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .card {
+      background: #1e2a3a;
+      border: 1px solid #2a3a4a;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      text-align: center;
+      padding: 2.5rem;
+    }
+    h1 { color: #00d4aa; font-size: 1.8rem; margin-bottom: 1.5rem; }
+    .info { font-size: 1rem; margin: 8px 0; }
+    .info span { color: #8899aa; }
+    .btn-calc {
+      background: #00d4aa; color: #0d1b2a; border: none;
+      padding: 12px 40px; border-radius: 8px; font-weight: 600;
+      font-size: 1.1rem; margin-top: 1.5rem; display: inline-block;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-calc:hover { background: #00b894; transform: translateY(-2px); }
+  </style>
 </head>
-
 <body>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-5 col-md-7 col-sm-9">
-        <h4 class="text-center group-header"><strong>SOFTWARE ENGINEERING CALCULATOR</strong> <em>VERITAS UNIVERSITY ABUJA</em></h4>
-        <div class="card calculator-card">
-          <div class="card-body p-4">
-            <div class="calculator">
-              <div class="display-container">
-                <div class="display-top">
-                  <span class="mode-indicator" id="modeIndicator">DEG</span>
-                  <span class="shift-indicator" id="shiftIndicator"></span>
-                </div>
-                <input type="text" class="form-control" id="result" placeholder="0" disabled />
-              </div>
-              <div class="btn-grid">
-                <button class="btn btn-operator" onclick="toggleMode()" id="modeBtn">DEG</button>
-                <button class="btn btn-shift" onclick="toggleShift()" id="shiftBtn">Shift</button>
-                <button class="btn btn-function" onclick="trigFunction('sin')" id="sinBtn">sin</button>
-                <button class="btn btn-function" onclick="trigFunction('cos')" id="cosBtn">cos</button>
-                <button class="btn btn-function" onclick="trigFunction('tan')" id="tanBtn">tan</button>
-
-                <button class="btn btn-action" onclick="clearEntry()">CE</button>
-                <button class="btn btn-action" onclick="clearResult()">AC</button>
-                <button class="btn btn-light" onclick="backspace()">&#8592;</button>
-                <button class="btn btn-operator" onclick="operatorToResult('/')">&#247;</button>
-                <button class="btn btn-operator" onclick="operatorToResult('*')">&#215;</button>
-
-                <button class="btn btn-light" onclick="appendToResult(7)">7</button>
-                <button class="btn btn-light" onclick="appendToResult(8)">8</button>
-                <button class="btn btn-light" onclick="appendToResult(9)">9</button>
-                <button class="btn btn-operator" onclick="operatorToResult('-')">&#8722;</button>
-                <button class="btn btn-operator" onclick="operatorToResult('+')">+</button>
-
-                <button class="btn btn-light" onclick="appendToResult(4)">4</button>
-                <button class="btn btn-light" onclick="appendToResult(5)">5</button>
-                <button class="btn btn-light" onclick="appendToResult(6)">6</button>
-                <button class="btn btn-light" onclick="appendToResult('.')">.</button>
-                <button class="btn btn-equals" onclick="calculateResult()">=</button>
-
-                <button class="btn btn-light" onclick="appendToResult(1)">1</button>
-                <button class="btn btn-light" onclick="appendToResult(2)">2</button>
-                <button class="btn btn-light" onclick="appendToResult(3)">3</button>
-                <button class="btn btn-light zero-btn" onclick="appendToResult(0)">0</button>
-              </div>
-            </div>
-          </div>
+      <div class="col-lg-5 col-md-7">
+        <div class="card">
+          <h1>SEN 482</h1>
+          <p class="info"><span>Name:</span> Limaro Stephanie Beno</p>
+          <p class="info"><span>Matric:</span> VUG/SEN/22/7328</p>
+          <p class="info"><span>Course:</span> Software Engineering</p>
+          <a href="calculator/" class="btn-calc">Open Calculator</a>
         </div>
       </div>
     </div>
   </div>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/script.js"></script>
 </body>
-
 </html>
