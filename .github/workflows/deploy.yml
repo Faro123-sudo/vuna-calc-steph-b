@@ -12,15 +12,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Log in to DockerHub
-        uses: docker/login-action@v3
-        with:
-          username: stellabenardo
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
+        continue-on-error: true
         with:
           context: .
           push: true
           tags: stellabenardo/vuna-calc:latest
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 159.198.47.177
+          username: beno_deploy
+          password: 'K#kzp4na!9Gnyvr1'
+          protocol: ftps
+          server-dir: /public_html/
